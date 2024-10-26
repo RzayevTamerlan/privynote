@@ -1,0 +1,147 @@
+{
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "globals": {
+    "process": true,
+    "React": true,
+    "JSX": true
+  },
+  "ignorePatterns": ["*.md"],
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:import/errors", "plugin:import/warnings", "plugin:import/typescript"],
+  "plugins": ["import", "@typescript-eslint", "simple-import-sort"],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json",
+      "extraFileExtensions": [".css"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json",
+        // This loads <rootdir>/tsconfig.json to eslint
+        "alwaysTryTypes": true // This will also resolve .d.ts files
+      }
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    // Avoid unused variables (TypeScript specific)
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        // Allow unused function arguments if prefixed with an underscore
+        "varsIgnorePattern": "^_"
+      }
+    ],
+
+    // Prefer default exports
+    "import/no-default-export": "warn",
+
+    // Enforce consistent naming conventions (TypeScript specific)
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    // Enforce consistent line breaks inside use client/imports
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "directive",
+        "next": "*"
+      },
+      // Add blank line after imports (between imports and constant that's contains functional component)
+      {
+        "blankLine": "always",
+        "prev": "import",
+        "next": "const"
+      },
+      // Add blank line after functional component and export
+      {
+        "blankLine": "always",
+        "prev": "const",
+        "next": "export"
+      }
+    ],
+    "lines-around-directive": [
+      "error",
+      {
+        "before": "never",
+        // No empty line before 'use client'
+        "after": "always"
+        // Ensure an empty line after 'use client'
+      }
+    ],
+    // Ensure imports are resolved correctly
+    "import/no-unresolved": "error",
+    "import/named": "error",
+    // Enforce JSX quote consistency
+    "jsx-quotes": ["error", "prefer-double"],
+    // Additional recommended rules:
+
+    // Disallow `console` usage (you can allow it during development)
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    // Disallow declaration of variables that are not used in the code
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    // Ensure consistent line breaks
+    "linebreak-style": ["error", "unix"],
+    // Enforce consistent spacing inside curly braces
+    "object-curly-spacing": ["error", "always"],
+    // Prefer `const` over `let` when variables are not reassigned
+    "prefer-const": "error",
+    // Prevent template literals when they aren't necessary
+    "no-template-curly-in-string": "error",
+    // Avoid empty functions
+    "no-empty-function": "error",
+    // Require semicolons at the end of statements
+    "semi": ["error", "always"],
+    // Enforce consistent use of trailing commas in multiline objects and arrays
+    "comma-dangle": ["error", "always-multiline"],
+    // Enforce using triple equals (`===`) over double equals (`==`)
+    "eqeqeq": ["error", "always"],
+    // Disallow use of magic numbers (numbers in code without explanation)
+    "no-magic-numbers": [
+      "warn",
+      {
+        "ignore": [0, 1, -1]
+        // Allow common use cases like 0 and 1
+      }
+    ],
+    // Enforce consistent indentation
+    "indent": ["error", 2],
+    // Two spaces per indentation level
+
+    // Require PascalCase for component names
+    "react/jsx-pascal-case": "error",
+    // Enforce consistent spacing between function identifier and its invocation
+    "func-call-spacing": ["error", "never"],
+    // Enforce consistent spacing around operators
+    "space-infix-ops": "error"
+  },
+  "overrides": [
+    {
+      "files": ["tailwind.config.ts", "page.tsx", "layout.tsx", "template.tsx"],
+      "rules": {
+        "import/no-default-export": "off" // Disable for these files
+      }
+    }
+  ]
+}
