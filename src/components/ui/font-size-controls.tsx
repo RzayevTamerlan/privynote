@@ -41,4 +41,4 @@ const FontSizeControls: FC<FontSizeControlsProps> = ({
   );
 };
 
-export default FontSizeControls;
+export { FontSizeControls };

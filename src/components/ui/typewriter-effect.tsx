@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { motion, stagger, useAnimate, useInView } from 'framer-motion';
 import { cn } from '@utils/cn';
 
+const STAGGER = 0.1;
+const DURATION = 0.3;
 
 const TypewriterEffect = ({
                       words,
@@ -37,13 +39,13 @@ const TypewriterEffect = ({
           width: "fit-content",
         },
         {
-          duration: 0.3,
-          delay: stagger(0.1),
+          duration: DURATION,
+          delay: stagger(STAGGER),
           ease: "easeInOut",
         }
       );
     }
-  }, [isInView]);
+  }, [isInView, animate]);
 
   const renderWords = () => {
     return (

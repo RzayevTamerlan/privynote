@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const ID_LENGTH = 10;
+
 export const NoteIdSchema = z.object({
-  id: z.string().min(10).max(10),
+  id: z.string().min(ID_LENGTH).max(ID_LENGTH),
 });

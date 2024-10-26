@@ -19,4 +19,4 @@ const Arrow: SvgProps = (props) => {
   );
 };
 
-export default Arrow;
+export { Arrow };

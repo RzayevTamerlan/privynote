@@ -5,7 +5,7 @@ import { FC, useLayoutEffect, useState } from 'react';
 import { useModal } from '@ui/animated-modal';
 import { NotePrivateModal } from '@components/note-private-modal';
 import { clearHtml } from '@utils/clearHtml';
-import FontSizeControls from '@ui/font-size-controls';
+import { FontSizeControls } from '@ui/font-size-controls';
 
 type NoteContentProps = {
   note: Note;

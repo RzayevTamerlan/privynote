@@ -3,7 +3,6 @@
 import { ActionResponse } from '@/types/ActionResponse';
 import { useState } from 'react';
 import { unlockNoteService } from '@services/unlockNoteService';
-import { UnlockNoteDto } from '@lib/dto/UnlockNoteDto';
 import { showToasts } from '@utils/showToasts';
 
 type UseUnlockNoteProps = [

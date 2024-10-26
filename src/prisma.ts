@@ -2,6 +2,7 @@ import { PrismaClient, Prisma } from '@prisma/client';
 import { nanoid } from 'nanoid';
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
+const NANO_ID_LENGTH = 10;
 
 export const prisma = globalForPrisma.prisma || new PrismaClient({
   log: ['query'],
@@ -15,7 +16,7 @@ prisma.$use(async (params: Prisma.MiddlewareParams, next: (params: Prisma.Middle
 
     // Generate a new ID until it's unique
     while (!isUnique) {
-      uniqueID = nanoid(10); // Adjust length as needed
+      uniqueID = nanoid(NANO_ID_LENGTH); // Adjust length as needed
       const existingRecord = await prisma.note.findUnique({
         where: { id: uniqueID },
       });

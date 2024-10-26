@@ -1,6 +1,8 @@
 import { toast, TypeOptions } from 'react-toastify';
 
-export const showToasts = (message: string | string[], type: TypeOptions, ms: number = 3000) => {
+const DEFAULT_TOAST_DURATION = 3000;
+
+export const showToasts = (message: string | string[], type: TypeOptions, ms: number = DEFAULT_TOAST_DURATION) => {
   if (Array.isArray(message)) {
     message.forEach((msg) => {
       toast(msg, { type: type, autoClose: ms });

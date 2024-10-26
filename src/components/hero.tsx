@@ -2,7 +2,7 @@ import { BackgroundBeamsWithCollision } from '@ui/background-beams-with-collisio
 import { TypewriterEffect } from '@ui/typewriter-effect';
 import { words } from '@constants/words';
 import ConnectBtn from '@ui/connect-btn';
-import Arrow from '@/icons/arrow';
+import { Arrow } from '@/icons/arrow';
 import Link from 'next/link';
 
 const Hero = () => {
