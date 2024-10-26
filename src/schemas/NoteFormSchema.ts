@@ -3,7 +3,7 @@ import { z } from 'zod';
 const MIN_PASSWORD_LENGTH = 5;
 const MAX_PASSWORD_LENGTH = 100;
 const MAX_CONTENT_LENGTH = 10000;
-const MIN_CONTENT_LENGTH = 100;
+const MIN_CONTENT_LENGTH = 3;
 
 export const NoteFormSchema = z.object({
   content: z
