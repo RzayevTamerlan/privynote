@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect } from "react";
-import { motion, stagger, useAnimate, useInView } from 'framer-motion';
 import { cn } from '@utils/cn';
+import { motion, stagger, useAnimate, useInView } from 'framer-motion';
+import { useEffect } from "react";
 
 const STAGGER = 0.1;
 const DURATION = 0.3;
 
 const TypewriterEffect = ({
-                      words,
-                      className,
-                      cursorClassName,
-                    }: {
+  words,
+  className,
+  cursorClassName,
+}: {
   words: {
     text: string;
     className?: string;
@@ -42,7 +42,7 @@ const TypewriterEffect = ({
           duration: DURATION,
           delay: stagger(STAGGER),
           ease: "easeInOut",
-        }
+        },
       );
     }
   }, [isInView, animate]);
@@ -59,7 +59,7 @@ const TypewriterEffect = ({
                   key={`char-${index}`}
                   className={cn(
                     `dark:text-white text-main-black opacity-0 hidden`,
-                    word.className
+                    word.className,
                   )}
                 >
                   {char}
@@ -76,7 +76,7 @@ const TypewriterEffect = ({
     <div
       className={cn(
         "text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center",
-        className
+        className,
       )}
     >
       {renderWords()}
@@ -94,7 +94,7 @@ const TypewriterEffect = ({
         }}
         className={cn(
           "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-blue-500",
-          cursorClassName
+          cursorClassName,
         )}
       ></motion.span>
     </div>
@@ -102,10 +102,10 @@ const TypewriterEffect = ({
 };
 
 const TypewriterEffectSmooth = ({
-                                         words,
-                                         className,
-                                         cursorClassName,
-                                       }: {
+  words,
+  className,
+  cursorClassName,
+}: {
   words: {
     text: string;
     className?: string;
@@ -182,7 +182,7 @@ const TypewriterEffectSmooth = ({
         }}
         className={cn(
           "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-blue-500",
-          cursorClassName
+          cursorClassName,
         )}
       ></motion.span>
     </div>

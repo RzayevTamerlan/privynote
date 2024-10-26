@@ -1,12 +1,12 @@
-import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@utils/cn';
+import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 
 
 const Highlight = ({
-                            children,
-                            className,
-                          }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -30,7 +30,7 @@ const Highlight = ({
       }}
       className={cn(
         `relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500`,
-        className
+        className,
       )}
     >
       {children}

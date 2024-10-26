@@ -98,12 +98,6 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "eqeqeq": ["error", "always"],
-    "no-magic-numbers": [
-      "warn",
-      {
-        "ignore": [0, 1, -1]
-      }
-    ],
     "indent": ["error", 2],
     "react/jsx-pascal-case": "error",
     "func-call-spacing": ["error", "never"],

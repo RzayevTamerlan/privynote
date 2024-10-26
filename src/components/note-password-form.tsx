@@ -1,14 +1,14 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { NotePasswordSchema } from '@schemas/NotePasswordSchema';
-import { z } from 'zod';
+import { Button } from '@ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form';
+import { Input } from '@ui/input';
+import { cn } from '@utils/cn';
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form';
-import { cn } from '@utils/cn';
-import { Input } from '@ui/input';
-import { Button } from '@ui/button';
+import { z } from 'zod';
 
 interface NotePasswordFormProps {
   loading: boolean;
@@ -53,4 +53,4 @@ const NotePasswordForm: FC<NotePasswordFormProps> = ({ loading, onSubmit, classN
   );
 };
 
-export default NotePasswordForm;
+export { NotePasswordForm };

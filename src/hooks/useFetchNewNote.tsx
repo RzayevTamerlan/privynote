@@ -1,8 +1,8 @@
 import { NoteDto } from '@lib/dto/NoteDto';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { createNewNoteService } from '@services/createNewNoteService';
 import { showToasts } from '@utils/showToasts';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 type UseFetchNewNote = [boolean, (note: NoteDto) => Promise<void>];
 

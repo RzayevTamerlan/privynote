@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react';
 import { Header } from '@components/header';
 import { ThemeProvider } from '@providers/ThemeProvider';
+import type { ReactNode } from 'react';
 
 export default function MainLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: ReactNode;
 }>) {
   return (

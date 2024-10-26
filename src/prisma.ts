@@ -30,7 +30,6 @@ prisma.$use(async (params: Prisma.MiddlewareParams, next: (params: Prisma.Middle
   return next(params);
 });
 
-// @ts-ignore
 if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma;
 }

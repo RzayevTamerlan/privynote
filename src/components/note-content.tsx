@@ -1,11 +1,11 @@
 'use client';
 
-import type { Note } from '@prisma/client';
-import { FC, useLayoutEffect, useState } from 'react';
-import { useModal } from '@ui/animated-modal';
 import { NotePrivateModal } from '@components/note-private-modal';
-import { clearHtml } from '@utils/clearHtml';
+import type { Note } from '@prisma/client';
+import { useModal } from '@ui/animated-modal';
 import { FontSizeControls } from '@ui/font-size-controls';
+import { clearHtml } from '@utils/clearHtml';
+import { FC, useLayoutEffect, useState } from 'react';
 
 type NoteContentProps = {
   note: Note;

@@ -1,18 +1,18 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { NoteFormSchema } from '@schemas/NoteFormSchema';
+import { Button } from '@ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form';
 import { Input } from '@ui/input';
-import { Button } from '@ui/button';
-import { Textarea } from '@ui/textarea';
 import { Switch } from '@ui/switch';
+import { Textarea } from '@ui/textarea';
+import { cn } from '@utils/cn';
+import { getRandomPlaceholder } from '@utils/getRandomPlaceholder';
 import type { FC } from 'react';
 import { useLayoutEffect, useState } from 'react';
-import { getRandomPlaceholder } from '@utils/getRandomPlaceholder';
-import { cn } from '@utils/cn';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 interface NewNoteFormProps {
   loading: boolean;

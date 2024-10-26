@@ -1,9 +1,11 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import type { ReactNode } from 'react';
-import { montserrat } from '@/fonts';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import { ToastContainer } from 'react-toastify';
+
+import { montserrat } from '@/fonts';
 
 export const metadata: Metadata = {
   title: 'Privy Note',
@@ -12,18 +14,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: ReactNode;
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-    <body
-      className={`${montserrat.className}`}
-    >
-    <ToastContainer />
-    {children}
-    </body>
+      <body
+        className={`${montserrat.className}`}
+      >
+        <ToastContainer />
+        {children}
+      </body>
     </html>
   );
 }

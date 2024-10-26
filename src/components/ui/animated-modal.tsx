@@ -33,12 +33,12 @@ export const useModal = () => {
 
 const Modal = ({ children }: { children: ReactNode }) => {
   return <ModalProvider>{children}</ModalProvider>;
-}
+};
 
 const ModalTrigger = ({
-                               children,
-                               className,
-                             }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -57,9 +57,9 @@ const ModalTrigger = ({
 };
 
 const ModalBody = ({
-                            children,
-                            className,
-                          }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -135,9 +135,9 @@ const ModalBody = ({
 };
 
 const ModalContent = ({
-                               children,
-                               className,
-                             }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -149,9 +149,9 @@ const ModalContent = ({
 };
 
 const ModalFooter = ({
-                              children,
-                              className,
-                            }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -236,4 +236,4 @@ const useOutsideClick = (
   }, [ref, callback]);
 };
 
-export { Modal, ModalTrigger, ModalBody, ModalContent, ModalFooter, ModalProvider };
+export { Modal, ModalBody, ModalContent, ModalFooter, ModalProvider,ModalTrigger };

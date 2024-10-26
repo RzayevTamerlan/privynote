@@ -1,9 +1,9 @@
-import type { FC } from 'react';
+import { NoteContent } from '@components/note-content';
 import { GetNoteByIdDto } from '@lib/dto/GetNoteByIdDto';
 import { getNoteByIdService } from '@services/getNoteByIdService';
-import Error from '@ui/Error';
-import { NoteContent } from '@components/note-content';
 import { ModalProvider } from '@ui/animated-modal';
+import Error from '@ui/Error';
+import type { FC } from 'react';
 
 type NoteInnerProps = {
   id: string;

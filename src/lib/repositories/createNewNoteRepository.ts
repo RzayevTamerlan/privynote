@@ -2,8 +2,9 @@
 
 
 import { NoteDto } from '@lib/dto/NoteDto';
-import { prisma } from '@/prisma';
 import crypto from 'crypto';
+
+import { prisma } from '@/prisma';
 import { ActionResponse } from '@/types/ActionResponse';
 
 const algorithm = 'aes-256-cbc';

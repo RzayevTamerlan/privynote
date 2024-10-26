@@ -32,7 +32,7 @@ export const NoteFormSchema = z.object({
         path: ["password"],
         message: "Password can't be longer than 100 characters",
         code: z.ZodIssueCode.custom,
-      })
+      });
     }
     else if (!/[A-Za-z]/.test(data.password)) {
       ctx.addIssue({

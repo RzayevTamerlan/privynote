@@ -1,5 +1,5 @@
-import type { FC } from 'react';
 import { Button } from '@ui/button';
+import type { FC } from 'react';
 
 interface FontSizeControlsProps {
   fontSize: number;
@@ -9,11 +9,11 @@ interface FontSizeControlsProps {
 }
 
 const FontSizeControls: FC<FontSizeControlsProps> = ({
-                                                       fontSize,
-                                                       increaseFontSize,
-                                                       decreaseFontSize,
-                                                       resetFontSize,
-                                                     }) => {
+  fontSize,
+  increaseFontSize,
+  decreaseFontSize,
+  resetFontSize,
+}) => {
   return (
     <div className="flex flex-col w-fit gap-5 mb-4">
       <div className="flex items-center gap-5">

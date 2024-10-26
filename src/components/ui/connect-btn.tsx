@@ -1,9 +1,9 @@
 'use client';
 
+import { cn } from '@utils/cn';
+import { useInView } from 'framer-motion';
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 import { useRef } from 'react';
-import { useInView } from 'framer-motion';
-import { cn } from '@utils/cn';
 
 interface ConnectBtnProps extends HTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
@@ -21,7 +21,7 @@ const ConnectBtn: FC<ConnectBtnProps> = ({ onClick, children, className, icon, .
       className={cn(
         "dark:bg-slate-800 bg-white no-underline group cursor-pointer relative dark:shadow-2xl dark:shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block transition-all duration-700 overflow-hidden",
         isInView ? "opacity-100 translate-y-0 visible" : "opacity-0 translate-y-10 invisible",
-        className
+        className,
       )}
     >
       <span className="absolute inset-0 overflow-hidden rounded-full">
@@ -48,4 +48,4 @@ const ConnectBtn: FC<ConnectBtnProps> = ({ onClick, children, className, icon, .
   );
 };
 
-export default ConnectBtn;
+export { ConnectBtn };

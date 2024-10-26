@@ -4,7 +4,7 @@ export const words =
   [
     {
       text: "Experience",
-      className: "text-5xl"
+      className: "text-5xl",
     },
     {
       text: "secure,",
@@ -12,7 +12,7 @@ export const words =
     },
     {
       text: "seamless",
-      className: "text-5xl"
+      className: "text-5xl",
     },
     {
       text: "note-taking",
@@ -24,7 +24,7 @@ export const words =
     },
     {
       text: "with",
-      className: "text-5xl"
+      className: "text-5xl",
     },
     {
       text: "Privy",
@@ -33,5 +33,5 @@ export const words =
     {
       text: "Note.",
       className: `text-blue-500 ${jetBrainsMono.className} dark:text-blue-500 text-6xl font-bold leading-tight`,
-    }
+    },
   ];

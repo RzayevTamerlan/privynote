@@ -1,5 +1,5 @@
-import { NotePasswordSchema } from '@schemas/NotePasswordSchema';
 import { NoteIdSchema } from '@schemas/NoteIdSchema';
+import { NotePasswordSchema } from '@schemas/NotePasswordSchema';
 
 export class UnlockNoteDto {
   public password: string;

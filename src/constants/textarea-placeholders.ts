@@ -54,5 +54,5 @@ export const textareaPlaceholders = [
   "Noteworthy thoughts go here!",
   "Think it. Ink it.",
   "This is where the magic happens! ✨",
-  "Empty space—ready to be filled! 📦"
+  "Empty space—ready to be filled! 📦",
 ];

@@ -1,3 +1,11 @@
 *.css
 *.scss
 *.sass
+prisma
+/src/prisma.ts
+tailwind.config.ts
+# Cuz we are using UI components from other libraries
+/src/components/ui/
+next.config.ts
+next-env.d.ts
+components.json

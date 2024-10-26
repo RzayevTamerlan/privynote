@@ -6,9 +6,9 @@ import type { HTMLProps, ReactNode, RefObject } from 'react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
 const BackgroundBeamsWithCollision = ({
-                                        children,
-                                        className,
-                                      }: {
+  children,
+  className,
+}: {
   children: ReactNode;
   className?: string;
 }) => {
@@ -116,7 +116,7 @@ const CollisionMechanism = forwardRef<
       repeatDelay?: number;
     };
   }
->(({ parentRef, containerRef, beamOptions = {} }, ref) => {
+>(({ parentRef, containerRef, beamOptions = {} }) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;

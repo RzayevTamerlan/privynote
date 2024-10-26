@@ -11,4 +11,4 @@ export const theme = {
       text: "#000000",
     },
   },
-}
+};

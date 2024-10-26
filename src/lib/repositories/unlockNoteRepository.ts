@@ -1,9 +1,10 @@
 'use server';
 
 import { UnlockNoteDto } from '@lib/dto/UnlockNoteDto';
+import crypto from 'crypto';
+
 import { prisma } from '@/prisma';
 import { ActionResponse } from '@/types/ActionResponse';
-import crypto from 'crypto';
 
 const algorithm = 'aes-256-cbc';
 const hashAlgorithm = 'sha256';

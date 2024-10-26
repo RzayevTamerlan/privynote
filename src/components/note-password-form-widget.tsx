@@ -1,7 +1,7 @@
-import type { FC } from 'react';
-import useUnlockNote from '@hooks/useUnlockNote';
-import NotePasswordForm from '@components/note-password-form';
+import { NotePasswordForm } from '@components/note-password-form';
+import { useUnlockNote } from '@hooks/useUnlockNote';
 import { useModal } from '@ui/animated-modal';
+import type { FC } from 'react';
 
 type NotePasswordFormWidgetProps = {
   setIsUnlocked: (isUnlocked: boolean) => void;

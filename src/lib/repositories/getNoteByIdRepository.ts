@@ -1,9 +1,10 @@
 'use server';
 
 import { GetNoteByIdDto } from '@lib/dto/GetNoteByIdDto';
-import { ActionResponse } from '@/types/ActionResponse';
 import { Note } from '@prisma/client';
+
 import { prisma } from '@/prisma';
+import { ActionResponse } from '@/types/ActionResponse';
 
 export const getNoteByIdRepository = async (dto: GetNoteByIdDto): Promise<ActionResponse<Note>> => {
   const note = await prisma.note.findUnique({

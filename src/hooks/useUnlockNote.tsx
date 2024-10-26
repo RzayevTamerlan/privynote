@@ -1,9 +1,10 @@
 'use client';
 
-import { ActionResponse } from '@/types/ActionResponse';
-import { useState } from 'react';
 import { unlockNoteService } from '@services/unlockNoteService';
 import { showToasts } from '@utils/showToasts';
+import { useState } from 'react';
+
+import { ActionResponse } from '@/types/ActionResponse';
 
 type UseUnlockNoteProps = [
   boolean,
@@ -40,4 +41,4 @@ const useUnlockNote = (): UseUnlockNoteProps => {
   return [loading, fetchUnlockNote];
 };
 
-export default useUnlockNote;
+export { useUnlockNote };
