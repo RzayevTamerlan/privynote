@@ -3,6 +3,7 @@
 import { NotePasswordFormWidget } from '@components/note-password-form-widget';
 import { ModalBody } from '@ui/animated-modal';
 import type { FC } from 'react';
+
 import { jetBrainsMono } from '@/fonts';
 
 type NotePrivateModalProps = {
