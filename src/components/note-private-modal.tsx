@@ -15,9 +15,9 @@ type NotePrivateModalProps = {
 const NotePrivateModal: FC<NotePrivateModalProps> = ({ setIsUnlocked, setContent, id }) => {
   return (
     <ModalBody>
-      <div className="flex flex-col gap-5 p-10 items-center">
+      <div className="flex flex-col gap-4 p-10 items-center">
         <h2 className="text-2xl dark:text-white text-main-black font-semibold">
-          🔒 Shhh! It&apos;s a <span className={`text-[#3B82F6] font-bold ${jetBrainsMono.className}`}>Privy Note</span>!
+          🔒 Shhh! It&apos;s a <span className={`text-[#3B82F6] text-3xl font-bold ${jetBrainsMono.className}`}>Privy Note</span>!
         </h2>
         <p className="text-lg dark:text-white text-main-black text-center">
           🕵️‍♂️ This content is as private as your best-kept secret! <br />
