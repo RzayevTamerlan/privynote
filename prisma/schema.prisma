@@ -1,0 +1,17 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Note {
+  id             String          @id @default(dbgenerated()) // Change type to String and remove autoincrement
+  isPrivate      Boolean         @default(false)
+  content        String
+  password       String?
+  createdAt      DateTime        @default(now())
+}
