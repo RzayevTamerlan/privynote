@@ -23,7 +23,7 @@ const FontSizeControls: FC<FontSizeControlsProps> = ({
         >
           A-
         </Button>
-        <span>Font size: {fontSize}px</span>
+        <span className="w-[118px]">Font size: {fontSize}px</span>
         <Button
           onClick={increaseFontSize}
           className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded md:hover:bg-blue-600"

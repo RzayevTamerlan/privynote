@@ -11,7 +11,9 @@ datasource db {
 model Note {
   id             String          @id @default(dbgenerated()) // Change type to String and remove autoincrement
   isPrivate      Boolean         @default(false)
+  isEditable    Boolean         @default(false)
   content        String
   password       String?
+  editPassword   String?
   createdAt      DateTime        @default(now())
 }

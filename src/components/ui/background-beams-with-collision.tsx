@@ -72,7 +72,7 @@ const BackgroundBeamsWithCollision = ({
     <div
       ref={parentRef}
       className={cn(
-        'h-96 md:h-[calc(100vh-84px)] dark:bg-main-black relative flex items-center w-full justify-center overflow-hidden',
+        'h-[calc(100vh-84px)] dark:bg-main-black relative flex items-center w-full justify-center overflow-hidden',
         // h-screen if you want bigger
         className,
       )}
@@ -116,7 +116,7 @@ const CollisionMechanism = forwardRef<
       repeatDelay?: number;
     };
   }
->(({ parentRef, containerRef, beamOptions = {} }) => {
+>(({ parentRef, containerRef, beamOptions = {} }, ref) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;

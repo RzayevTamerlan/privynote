@@ -1,44 +1,58 @@
-'use client';
-
 import { zodResolver } from '@hookform/resolvers/zod';
-import { NoteFormSchema } from '@schemas/NoteFormSchema';
+import { useTextAreaPlaceholder } from '@hooks/useTextAreaPlaceholder';
+import { EditNoteFormSchema } from '@schemas/EditNoteFormSchema';
 import { Button } from '@ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@ui/form';
 import { Input } from '@ui/input';
 import { Switch } from '@ui/switch';
 import { Textarea } from '@ui/textarea';
 import { cn } from '@utils/cn';
-import { getRandomPlaceholder } from '@utils/getRandomPlaceholder';
-import type { FC } from 'react';
-import { useLayoutEffect, useState } from 'react';
+import { FC, HTMLAttributes, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-interface NewNoteFormProps {
+import { ClientNote } from '@/types/ClientNote';
+
+interface EditNoteFormProps extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   loading: boolean;
-  onSubmit: (data: z.infer<typeof NoteFormSchema>) => Promise<void>;
+  note: ClientNote;
+  onSubmit: (data: z.infer<typeof EditNoteFormSchema>) => Promise<void>;
   className?: string;
 }
 
-const NewNoteForm: FC<NewNoteFormProps> = ({ loading, onSubmit, className }) => {
-  const form = useForm<z.infer<typeof NoteFormSchema>>({
-    resolver: zodResolver(NoteFormSchema),
+
+const EditNoteForm: FC<EditNoteFormProps> = ({
+  loading,
+  onSubmit,
+  className,
+  note,
+  ...props
+}) => {
+
+  const form = useForm<z.infer<typeof EditNoteFormSchema>>({
+    resolver: zodResolver(EditNoteFormSchema),
     reValidateMode: 'onChange',
     mode: 'all',
     defaultValues: {
-      content: '',
-      isPrivate: false,
+      content: note?.content || '',
+      isPrivate: note?.isPrivate,
       password: '',
+      editPassword: '',
     },
   });
-  const [textAreaPlaceholder, setTextAreaPlaceholder] = useState('');
 
-  useLayoutEffect(() => {
-    setTextAreaPlaceholder(getRandomPlaceholder());
-  }, []);
+  useEffect(() => {
+    if (note?.content) {
+      form?.setValue('content', note?.content);
+    }
+  }, [note?.content, form]);
+
+  const { textAreaPlaceholder } = useTextAreaPlaceholder();
 
   return (
-    <Form {...form}>
+    <Form
+      {...props}
+      {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={`${cn('my-14 flex flex-col gap-7', className)}`}>
         {/* Content Field */}
         <FormField
@@ -97,10 +111,34 @@ const NewNoteForm: FC<NewNoteFormProps> = ({ loading, onSubmit, className }) => 
           />
         )}
 
-        <Button disabled={loading} className="text-xl py-5 px-3 font-semibold" type="submit">Submit</Button>
+        <FormField
+          control={form.control}
+          name="editPassword"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Enter password for editing</FormLabel>
+              <FormControl>
+                <Input
+                  type="editPassword"
+                  placeholder="Enter edit password"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
+          disabled={loading}
+          className="text-xl py-5 px-3 font-semibold"
+          type="submit">
+          Submit
+        </Button>
+
       </form>
     </Form>
   );
 };
 
-export { NewNoteForm };
+export { EditNoteForm };

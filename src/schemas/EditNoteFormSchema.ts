@@ -5,15 +5,14 @@ const MAX_PASSWORD_LENGTH = 100;
 const MAX_CONTENT_LENGTH = 10000;
 const MIN_CONTENT_LENGTH = 3;
 
-export const NoteFormSchema = z.object({
+export const EditNoteFormSchema = z.object({
   content: z
     .string()
     .min(MIN_CONTENT_LENGTH, { message: 'Content must contain at least 3 characters' })
     .max(MAX_CONTENT_LENGTH, { message: 'Content can\'t contain more than 10,000 characters' }),
   isPrivate: z.boolean(),
-  isEditable: z.boolean(),
   password: z.string().optional(),
-  editPassword: z.string().optional(),
+  editPassword: z.string(),
 }).superRefine((data, ctx) => {
   if (data.isPrivate) {
     if (!data.password) {
@@ -40,34 +39,6 @@ export const NoteFormSchema = z.object({
       ctx.addIssue({
         path: ["password"],
         message: "Password must contain at least one letter",
-        code: z.ZodIssueCode.custom,
-      });
-    }
-  }
-
-  if (data.isEditable) {
-    if (!data.editPassword) {
-      ctx.addIssue({
-        path: ["editPassword"],
-        message: "Edit password is required for editable notes",
-        code: z.ZodIssueCode.custom,
-      });
-    } else if (data.editPassword.length < MIN_PASSWORD_LENGTH) {
-      ctx.addIssue({
-        path: ["editPassword"],
-        message: "Edit password must be at least 5 characters long",
-        code: z.ZodIssueCode.custom,
-      });
-    } else if (data.editPassword.length > MAX_PASSWORD_LENGTH) {
-      ctx.addIssue({
-        path: ["editPassword"],
-        message: "Edit password can't be longer than 100 characters",
-        code: z.ZodIssueCode.custom,
-      });
-    } else if (!/[A-Za-z]/.test(data.editPassword)) {
-      ctx.addIssue({
-        path: ["editPassword"],
-        message: "Edit password must contain at least one letter",
         code: z.ZodIssueCode.custom,
       });
     }

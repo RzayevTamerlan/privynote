@@ -1,60 +1,48 @@
 'use client';
 
 import { NotePrivateModal } from '@components/note-private-modal';
-import type { Note } from '@prisma/client';
-import { useModal } from '@ui/animated-modal';
-import { FontSizeControls } from '@ui/font-size-controls';
+import { useFontSize } from '@hooks/useFontSize';
+import { usePrivate } from '@hooks/usePrivate';
+import { useContent } from '@providers/ContentProvider';
+import { Button } from '@ui/button';
 import { clearHtml } from '@utils/clearHtml';
-import { FC, useLayoutEffect, useState } from 'react';
+import Link from 'next/link';
+import { FC } from 'react';
+
+import { ClientNote } from '@/types/ClientNote';
 
 type NoteContentProps = {
-  note: Note;
+  note: ClientNote;
 };
 
-const DEFAULT_FONT_SIZE = 18;
-
 const NoteContent: FC<NoteContentProps> = ({ note }) => {
-  const [content, setContent] = useState<string | null>(note.isPrivate ? null : note.content);
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(!note.isPrivate);
-  const { setOpen } = useModal();
+  const { content } = useContent();
+  const { setIsUnlocked, isUnlocked } = usePrivate(note);
 
-  // State for font size
-  const [fontSize, setFontSize] = useState<number>(DEFAULT_FONT_SIZE); // Default font size in pixels
-
-  useLayoutEffect(() => {
-    if (note.isPrivate && !isUnlocked) {
-      setOpen(true);
-    }
-  }, [isUnlocked, note.isPrivate, setOpen]);
-
-  // Handlers for font size control
-  const increaseFontSize = () => {
-    setFontSize((prev) => Math.min(prev + 2, 33)); // Increase by 2px but not above 30px
-  };
-
-  const decreaseFontSize = () => {
-    setFontSize((prev) => Math.max(prev - 2, 10)); // Decrease by 2px but not below 10px
-  };
-
-  const resetFontSize = () => {
-    setFontSize(DEFAULT_FONT_SIZE); // Reset to default size
-  };
+  const {
+    fontSize,
+    FontSizeControlsComponent,
+  } = useFontSize();
 
   return (
     <div className="my-[90px] flex flex-col gap-5">
-      <NotePrivateModal
-        setIsUnlocked={setIsUnlocked}
-        setContent={setContent}
-        id={note.id}
-      />
+      {!isUnlocked && note?.isPrivate && (
+        <NotePrivateModal
+          setIsUnlocked={setIsUnlocked}
+          id={note.id}
+        />
+      )}
 
-      {/* Font size control buttons */}
-      <FontSizeControls
-        fontSize={fontSize}
-        increaseFontSize={increaseFontSize}
-        resetFontSize={resetFontSize}
-        decreaseFontSize={decreaseFontSize}
-      />
+      <div className="flex items-center justify-between">
+        {FontSizeControlsComponent}
+        {note?.isEditable && (
+          <Button className="p-0" variant="ghost">
+            <Link href={`/note/edit/${note?.id}`} className="text-xl py-3 px-5 font-semibold">
+              Edit this note
+            </Link>
+          </Button>
+        )}
+      </div>
 
       <article
         style={{

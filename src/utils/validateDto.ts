@@ -14,7 +14,7 @@ export const validateDto = <T>(validatorClass: Validatable<T>, dto: T): ActionRe
     return { error: null, data: validatedDto };
   } catch (e) {
     if (e instanceof ZodError) {
-      return { error: { statusCode: 500, message: e.message }, data: null };
+      return { error: { statusCode: 500, message: e.errors[0]?.message }, data: null };
     } else {
       return { error: { statusCode: 500, message: 'An error occurred' }, data: null };
     }

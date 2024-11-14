@@ -1,4 +1,4 @@
-import { words } from '@constants/words';
+import { heroWords } from '@constants/hero-words';
 import { BackgroundBeamsWithCollision } from '@ui/background-beams-with-collision';
 import { ConnectBtn } from '@ui/connect-btn';
 import { TypewriterEffect } from '@ui/typewriter-effect';
@@ -14,7 +14,7 @@ const Hero = () => {
           <h2 className="text-left">
             <TypewriterEffect
               className="w-fit"
-              words={words}
+              words={heroWords}
             >
             </TypewriterEffect>
           </h2>

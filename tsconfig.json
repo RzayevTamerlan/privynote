@@ -64,7 +64,10 @@
       ],
       "@schemas/*": [
         "./src/schemas/*"
-      ]
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ],
     }
   },
   "include": [

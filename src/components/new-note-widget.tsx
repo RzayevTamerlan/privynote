@@ -1,13 +1,13 @@
 'use client';
 
-import { NewNoteForm } from '@components/new-note-form';
+import { NoteForm } from '@components/note-form';
 import { useFetchNewNote } from '@hooks/useFetchNewNote';
 
 const NewNoteWidget = () => {
   const [loading, fetchNewNote] = useFetchNewNote();
 
   return (
-    <NewNoteForm
+    <NoteForm
       loading={loading}
       onSubmit={fetchNewNote}
     />

@@ -1,9 +1,14 @@
 import { jetBrainsMono } from "@fonts/index";
 
-export const words =
+// Experience a secure, seamless note-taking journey with Privy Note
+export const heroWords =
   [
     {
       text: "Experience",
+      className: "text-5xl",
+    },
+    {
+      text: "a",
       className: "text-5xl",
     },
     {
@@ -19,7 +24,7 @@ export const words =
       className: "text-blue-500 dark:text-blue-500 text-5xl",
     },
     {
-      text: "experience",
+      text: "journey",
       className: "text-5xl",
     },
     {

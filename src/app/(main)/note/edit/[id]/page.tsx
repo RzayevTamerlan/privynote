@@ -1,11 +1,11 @@
-import { NoteInner } from '@components/note-inner';
+import { EditNoteInner } from '@components/edit-note-inner';
 import { FC, Suspense } from 'react';
 
-type NotePageProps = {
+type NoteEditPageProps = {
   params: Promise<{ id: string }>;
-};
+}
 
-const NotePage: FC<NotePageProps> = async props => {
+const NoteEditPage:FC<NoteEditPageProps> = async props => {
   const params = await props.params;
   const { id } = params;
 
@@ -13,7 +13,7 @@ const NotePage: FC<NotePageProps> = async props => {
     <main className="py-10">
       <div className="container">
         <Suspense fallback="Loading...">
-          <NoteInner
+          <EditNoteInner
             id={id}
           />
         </Suspense>
@@ -22,4 +22,4 @@ const NotePage: FC<NotePageProps> = async props => {
   );
 };
 
-export default NotePage;
+export default NoteEditPage;

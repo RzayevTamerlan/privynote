@@ -1,31 +1,12 @@
 'use server';
 
+import { algorithm, hashAlgorithm } from '@constants/hash-algorithms';
 import { UnlockNoteDto } from '@lib/dto/UnlockNoteDto';
-import crypto from 'crypto';
+import { decryptContent } from '@utils/decryptContent';
+import { hashPassword } from '@utils/hashPassword';
 
 import { prisma } from '@/prisma';
 import { ActionResponse } from '@/types/ActionResponse';
-
-const algorithm = 'aes-256-cbc';
-const hashAlgorithm = 'sha256';
-
-// Функция для хеширования пароля (такая же, как при шифровании)
-const hashPassword = (password: string) => {
-  return crypto.createHash(hashAlgorithm).update(password).digest('hex');
-};
-
-// Функция для расшифровки контента
-const decryptContent = (encryptedContent: string, password: string) => {
-  const [ivHex, encryptedText] = encryptedContent.split(':');
-  const iv = Buffer.from(ivHex, 'hex');
-  const key = crypto.createHash(hashAlgorithm).update(password).digest();
-
-  const decipher = crypto.createDecipheriv(algorithm, key, iv);
-  let decrypted = decipher.update(encryptedText, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-
-  return decrypted;
-};
 
 type UnlockNoteRepositoryResponse = {
   content: string;
@@ -49,7 +30,7 @@ export const unlockNoteRepository = async (dto: UnlockNoteDto): Promise<ActionRe
     };
   }
 
-  const hashedPassword = hashPassword(password);
+  const hashedPassword = hashPassword(password, hashAlgorithm);
 
   if (hashedPassword !== note.password) {
     return {
@@ -61,7 +42,12 @@ export const unlockNoteRepository = async (dto: UnlockNoteDto): Promise<ActionRe
     };
   }
 
-  const decryptedContent = decryptContent(note.content, password);
+  const decryptedContent = decryptContent({
+    encryptedContent: note.content,
+    password,
+    hashAlgorithm: hashAlgorithm,
+    algorithm: algorithm,
+  });
 
   return {
     data: {

@@ -1,6 +1,7 @@
 'use client';
 
 import { NotePasswordFormWidget } from '@components/note-password-form-widget';
+import { useContent } from '@providers/ContentProvider';
 import { ModalBody } from '@ui/animated-modal';
 import type { FC } from 'react';
 
@@ -8,11 +9,12 @@ import { jetBrainsMono } from '@/fonts';
 
 type NotePrivateModalProps = {
   setIsUnlocked: (isUnlocked: boolean) => void;
-  setContent: (content: string) => void;
   id: string;
 };
 
-const NotePrivateModal: FC<NotePrivateModalProps> = ({ setIsUnlocked, setContent, id }) => {
+const NotePrivateModal: FC<NotePrivateModalProps> = ({ setIsUnlocked, id }) => {
+  const { setContent } = useContent();
+
   return (
     <ModalBody>
       <div className="flex flex-col gap-4 p-10 items-center">

@@ -1,4 +1,4 @@
-import { NoteContent } from '@components/note-content';
+import { EditNote } from '@components/edit-note';
 import { GetNoteByIdDto } from '@lib/dto/GetNoteByIdDto';
 import { ContentProvider } from '@providers/ContentProvider';
 import { getNoteByIdService } from '@services/getNoteByIdService';
@@ -6,11 +6,11 @@ import { ModalProvider } from '@ui/animated-modal';
 import Error from '@ui/Error';
 import type { FC } from 'react';
 
-type NoteInnerProps = {
+type EditNoteInnerProps = {
   id: string;
 };
 
-const NoteInner: FC<NoteInnerProps> = async ({ id }) => {
+const EditNoteInner: FC<EditNoteInnerProps> = async ({ id }) => {
   const note = await getNoteByIdService(new GetNoteByIdDto({ id }));
 
   if (note?.error && note.error.statusCode === 404) {
@@ -23,16 +23,19 @@ const NoteInner: FC<NoteInnerProps> = async ({ id }) => {
     return <Error gotoLink="/" gotoText="Go to the main page" error={note.error.message} />;
   }
 
+  if (note?.data?.isEditable === false) {
+    return <Error gotoLink={`/note/${note?.data?.id}`} gotoText="Go to the note" error="This note is not editable!" />;
+  }
+
   return (
     <ContentProvider>
       <ModalProvider>
-        <NoteContent
+        <EditNote
           note={note.data}
         />
       </ModalProvider>
     </ContentProvider>
-
   );
 };
 
-export { NoteInner };
+export { EditNoteInner };

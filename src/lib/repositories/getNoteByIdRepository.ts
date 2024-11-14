@@ -1,12 +1,12 @@
 'use server';
 
 import { GetNoteByIdDto } from '@lib/dto/GetNoteByIdDto';
-import { Note } from '@prisma/client';
 
 import { prisma } from '@/prisma';
 import { ActionResponse } from '@/types/ActionResponse';
+import { ClientNote } from '@/types/ClientNote';
 
-export const getNoteByIdRepository = async (dto: GetNoteByIdDto): Promise<ActionResponse<Note>> => {
+export const getNoteByIdRepository = async (dto: GetNoteByIdDto): Promise<ActionResponse<ClientNote>> => {
   const note = await prisma.note.findUnique({
     where: {
       id: dto.id,
@@ -24,7 +24,13 @@ export const getNoteByIdRepository = async (dto: GetNoteByIdDto): Promise<Action
   }
 
   return {
-    data: note,
+    data: {
+      id: note.id,
+      content: note.content,
+      createdAt: note.createdAt,
+      isEditable: note.isEditable,
+      isPrivate: note.isPrivate,
+    },
     error: null,
   };
 };
