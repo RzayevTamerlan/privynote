@@ -8,7 +8,7 @@ import { Arrow } from '@/icons/arrow';
 
 const Hero = () => {
   return (
-    <section className="mt-[84px]" id="hero">
+    <section className="mt-[84px] min-h-[calc(100vh-84px)]" id="hero">
       <BackgroundBeamsWithCollision>
         <div className="container flex flex-col gap-20 items-center">
           <h2 className="text-left">
