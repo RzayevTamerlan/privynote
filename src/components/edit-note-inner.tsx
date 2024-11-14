@@ -20,11 +20,24 @@ const EditNoteInner: FC<EditNoteInnerProps> = async ({ id }) => {
   }
 
   if (note?.error) {
-    return <Error gotoLink="/" gotoText="Go to the main page" error={note.error.message} />;
+    return (
+      <Error
+        className="mt-36"
+        gotoLink="/"
+        gotoText="Go to the main page"
+        error={note.error.message}
+      />
+    );
   }
 
   if (note?.data?.isEditable === false) {
-    return <Error gotoLink={`/note/${note?.data?.id}`} gotoText="Go to the note" error="This note is not editable!" />;
+    return (
+      <Error
+        className="mt-36"
+        gotoLink={`/note/${note?.data?.id}`}
+        gotoText="Go to the note"
+        error="This note is not editable!" />
+    );
   }
 
   return (
